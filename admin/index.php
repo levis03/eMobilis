@@ -1,30 +1,27 @@
 <?php
-session_start(); // Start the session to handle user authentication
+    session_start();
+    include('../includes/dbconn.php');
+    if(isset($_POST['signin'])){
 
-include('../includes/dbconn.php'); // Include the database connection file
+    $uname=$_POST['username'];
+    $password=md5($_POST['password']);
+    $sql ="SELECT UserName,Password FROM admin WHERE UserName=:uname and Password=:password";
+    $query= $dbh -> prepare($sql);
+    $query-> bindParam(':uname', $uname, PDO::PARAM_STR);
+    $query-> bindParam(':password', $password, PDO::PARAM_STR);
+    $query-> execute();
+    $results=$query->fetchAll(PDO::FETCH_OBJ);
 
-// Check if the form has been submitted
-if (isset($_POST['signin'])) {
-    $uname = $_POST['username']; // Get the username from the form
-    $password = md5($_POST['password']); // Hash the password using MD5
-
-    // SQL query to select the username and password from the admin table
-    $sql = "SELECT UserName, Password FROM admin WHERE UserName=:uname and Password=:password";
-    $query = $dbh->prepare($sql); // Prepare the SQL statement
-    $query->bindParam(':uname', $uname, PDO::PARAM_STR); // Bind the username parameter
-    $query->bindParam(':password', $password, PDO::PARAM_STR); // Bind the password parameter
-    $query->execute(); // Execute the query
-
-    $results = $query->fetchAll(PDO::FETCH_OBJ); // Fetch all results
-
-    // Check if any rows were returned (i.e., login was successful)
-    if ($query->rowCount() > 0) {
-        $_SESSION['alogin'] = $_POST['username']; // Set session variable for logged in user
-        echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>"; // Redirect to dashboard
+    if($query->rowCount() > 0)
+    {
+    $_SESSION['alogin']=$_POST['username'];
+        echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
     } else {
-        echo "<script>alert('Invalid Details');</script>"; // Display error if login fails
+        echo "<script>alert('Invalid Details');</script>";
     }
+
 }
+
 ?>
 
 <!doctype html>
@@ -59,38 +56,33 @@ if (isset($_POST['signin'])) {
         <div class="loader"></div>
     </div>
     <!-- preloader area end -->
-
     <!-- login area start -->
     <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
-                <!-- Login form -->
                 <form name="signin" method="POST">
                     <div class="login-form-head">
                         <h4>ADMIN PANEL</h4>
                         <p>Employee Leave Management System</p>
                     </div>
                     <div class="login-form-body">
-                        <!-- Username field -->
                         <div class="form-gp">
                             <label for="exampleInputEmail1">Username</label>
                             <input type="text" id="exampleInputEmail1" name="username" autocomplete="off" required>
                             <i class="ti-user"></i>
                             <div class="text-danger"></div>
                         </div>
-                        <!-- Password field -->
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" id="exampleInputPassword1" name="password" autocomplete="off" required>
                             <i class="ti-lock"></i>
                             <div class="text-danger"></div>
                         </div>
-
-                        <!-- Submit button -->
+                        
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit" name="signin">Submit <i class="ti-arrow-right"></i></button>
+                            
                         </div>
-                        <!-- Footer with link to go back -->
                         <div class="form-footer text-center mt-5">
                             <p class="text-muted"><a href="../index.php"><i class="ti-arrow-left"></i> Go Back</a></p>
                         </div>
@@ -101,17 +93,17 @@ if (isset($_POST['signin'])) {
     </div>
     <!-- login area end -->
 
-    <!-- jQuery latest version -->
+    <!-- jquery latest version -->
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
-    <!-- Bootstrap 4 JS -->
+    <!-- bootstrap 4 js -->
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/metisMenu.min.js"></script>
     <script src="../assets/js/jquery.slimscroll.min.js"></script>
     <script src="../assets/js/jquery.slicknav.min.js"></script>
-
-    <!-- Other plugins -->
+    
+    <!-- others plugins -->
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/scripts.js"></script>
 </body>
