@@ -10,36 +10,18 @@
             2.1.1 Horizontal Menu
         2.2 Header Area
         2.3 Page Title Area
-        2.4 Fact Area
-        2.5 Overview
-        2.6 Market value
-        2.7 Live Crypto Price
-        2.8 Trading History
-        2.9 Letest Post
     3. Dashboard Two
     4. Dashboard Three
-    5. Bar Chart
-    6. Line Chart
-    7. Pie Chart
-    8. Accroding
-    9. Alert
-   10. Badge
-   11. Button
-   12. Cards
-   13. Dropdown Button
-   14. List Group
-   15. Modal
-   16. Pagination
-   17. Form
-   18. Icons
-   19. Table Basic
-   20. Datatable
-   21. Map
-   22. Invoice
-   23. Login
-   24. Pricing
-   25. 404 Page
-   26. Offset Sidebar
+    5. Button
+    6. Cards
+    7. Dropdown Button
+    8. List Group
+    9. Modal
+   10. Pagination
+   11. Form
+   12. Icons
+   13. Table Basic
+   14. Login
 
 -----------------------------------------------------------------------------------*/
 
@@ -526,21 +508,21 @@
 
 .notify-title {
   background: var(--primary-color);
-  display: block;
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: space-between; /* Space between title and link */
   padding: 18px 30px;
   color: #fff;
   font-size: 15px;
   letter-spacing: 0;
-  overflow: hidden;
 }
 
 .notify-title a {
-  float: right;
-  display: inline-block;
   color: #ffee1d;
   font-size: 13px;
   text-decoration: underline;
 }
+
 
 .nofity-list {
   padding: 30px 0;
@@ -802,14 +784,14 @@ ul.breadcrumbs {
 }
 
 .s-report-inner {
-  background-color: #00ff51;
+  background-color: #f7e8e9;
   padding-left: 85px;
 }
 
 .single-report .icon {
   font-size: 32px;
   color: #fff;
-  background:#00ff51;
+  /* background:#00ff51; */
   height: 95px;
   width: 100px;
   text-align: right;
@@ -1247,8 +1229,8 @@ table.dbkit-table tr td {
   color: #e1e1e1;
 }
 
-.member-box .media-body {
-}
+/* .member-box .media-body {
+} */
 
 .member-box .media-body p {
   font-size: 18px;
@@ -1512,28 +1494,29 @@ table.dbkit-table tr td {
   opacity: 0;
 }
 
-@-webkit-keyframes pulse {
+@keyframes pulse {
   0% {
-    -webkit-transform: scale(0);
+    transform: scale(0);
     opacity: 0;
   }
   25% {
-    -webkit-transform: scale(0);
+    transform: scale(0);
     opacity: 0.1;
   }
   50% {
-    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
     opacity: 0.3;
   }
   75% {
-    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
     opacity: 0.5;
   }
   100% {
-    -webkit-transform: scale(1);
+    transform: scale(1);
     opacity: 0;
   }
 }
+
 
 .testimonial-carousel {
   margin: 60px 0 28px;
@@ -1984,8 +1967,8 @@ label {
 
 /*-------------------- 18. Icons ------------------- */
 
-.fw-icons {
-}
+/* .fw-icons {
+} */
 
 .fw-icons a {
   color: #444;
@@ -2201,8 +2184,6 @@ table.dataTable thead td {
 
 /*-------------------- 22. Invoice ------------------- */
 
-.invoice-area {
-}
 
 .invoice-head {
   margin-bottom: 30px;
@@ -2245,8 +2226,8 @@ table.dataTable thead td {
   margin-bottom: 5px;
 }
 
-.invoice-table {
-}
+/* .invoice-table {
+} */
 
 .invoice-table .table-bordered td,
 .invoice-table .table-bordered th {
@@ -2288,7 +2269,7 @@ table.dataTable thead td {
 /*-------------------- 23. Login ------------------- */
 
 .login-area {
-  background: #053e5f;
+  background:antiquewhite;
 }
 
 .login-box {
@@ -2302,7 +2283,7 @@ table.dataTable thead td {
   margin: auto;
   width: 450px;
   max-width: 100%;
-  background: #bc1616;
+  background:rgb(246, 245, 244);
   border-radius: 3px;
 }
 
@@ -2491,7 +2472,7 @@ table.dataTable thead td {
 .login-s2 .login-form-head,
 .login-s2 .login-box form,
 .login-s2 .login-box form .form-gp input {
-  background-color: #00ff51;
+  background-color: #d9d9eb;
 }
 
 .login-s2 .login-form-head h4,

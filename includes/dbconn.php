@@ -7,6 +7,9 @@ define('DB_NAME', 'employeeleavedb'); // Database name
 
 try {
     // Attempt to create a new PDO instance to connect to the MySQL database
+    /**
+     * The script attempts to create a new PDO instance to connect to the MySQL database using the defined connection parameters.
+     */
     $dbh = new PDO(
         "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, // Data source name (DSN)
         DB_USER,   // Database username
@@ -18,3 +21,6 @@ try {
     echo "Looks like you don't have any database/connection for this project. Please check your Database Connection and Try Again! </br>";
     exit("Error: " . $e->getMessage()); // Display the error message and terminate the script
 }
+/**
+ *  The script uses a try catch block to handle any errors that may occur during the database connection attempt.
+ * */
