@@ -1,6 +1,6 @@
 <div class="user-profile pull-right">
    <!-- User avatar image -->
-   <img class="avatar user-thumb" src="../assets/images/avatar.jpg" alt="avatar">
+   <img class="avatar user-thumb" src="../assets/images/user.png" alt="avatar">
 
    <!-- User name with dropdown toggle -->
    <h4 class="user-name dropdown-toggle" data-toggle="dropdown">

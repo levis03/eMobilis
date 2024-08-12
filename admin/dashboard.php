@@ -101,8 +101,8 @@
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="../assets/images/admin.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">ADMIN <i class="fa fa-angle-down"></i></h4>
+                            <img class="avatar user-thumb" src="../assets/images/administrator.png" alt="avatar">
+                            <h4 class="user-name dropdown-toggle " data-toggle="dropdown">ADMIN <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="logout.php">Log Out</a>
                             </div>
@@ -118,7 +118,7 @@
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-briefcase"></i></div>
+                                    <!-- <div class="icon"><i class="fa fa-briefcase"></i></div> -->
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Available Leave Types</h4>
                                         
@@ -134,7 +134,7 @@
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-users"></i></div>
+                                    <!-- <div class="icon"><i class="fa fa-users"></i></div> -->
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Registered Employees</h4>
                                         
@@ -150,7 +150,7 @@
                         <div class="col-md-4">
                             <div class="single-report">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-th-large"></i></div>
+                                    <!-- <div class="icon"><i class="fa fa-th-large"></i></div> -->
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Available Departments</h4>
                                         
@@ -171,7 +171,7 @@
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-spinner"></i></div>
+                                    <!-- <div class="icon"><i class="fa fa-spinner"></i></div> -->
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Pending Application</h4>
                                         
@@ -187,7 +187,7 @@
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-times"></i></div>
+                                    <!-- <div class="icon"><i class="fa fa-times"></i></div> -->
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Declined Application</h4>
                                         
@@ -203,7 +203,7 @@
                         <div class="col-md-4">
                             <div class="single-report">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                                    <!-- <div class="icon"><i class="fa fa-check-square-o"></i></div> -->
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Approved Application</h4>
                                         

@@ -6,58 +6,64 @@
  * This script handles the employee login functionality.
  *
  * @author Levis Maina
- * @version 1.0
+ * @version 1.1
  */
 
 // Start the session
 session_start();
+
+// Initialize error message variable
+$msg = '';
 
 // Include the database connection file
 include('includes/dbconn.php');
 
 // Check if the signin form has been submitted
 if (isset($_POST['signin'])) {
-    /**
-     * Validate and process the signin form data
-     *
-     * @param string $uname  The username (email address) entered by the user
-     * @param string $password  The password entered by the user
-     *
-     * @return void
-     */
-    $uname = $_POST['username'];
-    $password = md5($_POST['password']);
+    // Sanitize and retrieve form inputs
+    $uname = filter_var($_POST['username'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password'];
 
-    // Prepare the SQL query to retrieve the employee data
-    $sql = "SELECT EmailId, Password, Status, id FROM tblemployees WHERE EmailId=:uname and Password=:password";
+    // Prepare the SQL query to retrieve the employee data by email
+    $sql = "SELECT id, Password, Status FROM tblemployees WHERE EmailId = :uname";
     $query = $dbh->prepare($sql);
     $query->bindParam(':uname', $uname, PDO::PARAM_STR);
-    $query->bindParam(':password', $password, PDO::PARAM_STR);
     $query->execute();
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    $result = $query->fetch(PDO::FETCH_OBJ);
 
-    // Check if the query returned any results
-    if ($query->rowCount() > 0) {
-        // Loop through the results and extract the employee data
-        foreach ($results as $result) {
-            $status = $result->Status;
+    if ($result) {
+        // First, try to verify with the new bcrypt hash
+        if (password_verify($password, $result->Password)) {
+            // Correct bcrypt password, proceed to login
             $_SESSION['eid'] = $result->id;
-        }
-
-        // Check if the employee account is active
-        if ($status == 0) {
-            // Display an error message if the account is inactive
-            $msg = "In-Active Account. Please contact your administrator!";
-        } else {
-            // Set the employee login session variable
-            $_SESSION['emplogin'] = $_POST['username'];
-
-            // Redirect the user to the employee dashboard
+            $_SESSION['emplogin'] = $uname;
+            session_regenerate_id(true);
             echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
+            exit;
+        }
+        // If bcrypt fails, fall back to checking with md5 for legacy passwords
+        elseif ($result->Password === md5($password)) {
+            // Update the old md5 password to bcrypt
+            $newHashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $updateSql = "UPDATE tblemployees SET Password = :newPassword WHERE id = :id";
+            $updateQuery = $dbh->prepare($updateSql);
+            $updateQuery->bindParam(':newPassword', $newHashedPassword, PDO::PARAM_STR);
+            $updateQuery->bindParam(':id', $result->id, PDO::PARAM_INT);
+            $updateQuery->execute();
+
+            // Proceed with login
+            $_SESSION['eid'] = $result->id;
+            $_SESSION['emplogin'] = $uname;
+            session_regenerate_id(true);
+            echo "<script type='text/javascript'> document.location = 'employees/leave.php'; </script>";
+            exit;
+        } else {
+            // Incorrect password
+            $msg = "Incorrect password. Please try again.";
         }
     } else {
-        // Display an error message if the login credentials are invalid
-        echo "<script>alert('Sorry, Invalid Details.');</script>";
+        // Incorrect email
+        $msg = "Incorrect email address. Please try again.";
     }
 }
 
@@ -105,7 +111,7 @@ if (isset($_POST['signin'])) {
                         <h4>Employee Login Panel</h4>
                         <p>Employee Leave Management System</p>
                         <?php if ($msg) { ?>
-                            <div class="errorWrap"><strong>Error</strong> : <?php echo htmlentities($msg); ?> </div>
+                            <div class="errorWrap"><strong>Error</strong>: <?php echo htmlentities($msg); ?> </div>
                         <?php } ?>
                     </div>
                     <div class="login-form-body">

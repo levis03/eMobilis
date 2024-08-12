@@ -30,7 +30,7 @@ html {
 }
 
 body {
-    background: #fff;
+    background: #12035f;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     /* Fix for webkit rendering */
@@ -407,7 +407,7 @@ img {
 /* Colors */
 
 :root {
-    --primary-color: #4336FB;
+    --primary-color: #39fb36;
 }
 
 #preloader {

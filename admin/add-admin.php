@@ -18,30 +18,39 @@ if (strlen($_SESSION['alogin']) == 0) {
         // Retrieve form input values
         $fullname = $_POST['fullname'];
         $email = $_POST['email'];
-        $password = md5($_POST['password']); // Encrypt password
         $username = $_POST['username'];
+        $password = $_POST['password'];
+        $confirmpassword = $_POST['confirmpassword'];
 
-        // SQL query to insert new admin details into the database
-        $sql = "INSERT INTO admin(fullname,email,Password,UserName) VALUES(:fullname,:email,:password,:username)";
-        $query = $dbh->prepare($sql);
-
-        // Bind parameters to the SQL query
-        $query->bindParam(':fullname', $fullname, PDO::PARAM_STR);
-        $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':password', $password, PDO::PARAM_STR);
-        $query->bindParam(':username', $username, PDO::PARAM_STR);
-
-        // Execute the query
-        $query->execute();
-
-        // Get the ID of the last inserted record
-        $lastInsertId = $dbh->lastInsertId();
-
-        // Check if insertion was successful
-        if ($lastInsertId) {
-            $msg = "New admin has been added Successfully";
+        // Check if password and confirm password fields match
+        if ($password !== $confirmpassword) {
+            $error = "New Password and Confirm Password fields do not match!";
         } else {
-            $error = "ERROR";
+            // Hash the password with bcrypt
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+            // SQL query to insert new admin details into the database
+            $sql = "INSERT INTO admin(fullname,email,Password,UserName) VALUES(:fullname,:email,:password,:username)";
+            $query = $dbh->prepare($sql);
+
+            // Bind parameters to the SQL query
+            $query->bindParam(':fullname', $fullname, PDO::PARAM_STR);
+            $query->bindParam(':email', $email, PDO::PARAM_STR);
+            $query->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+            $query->bindParam(':username', $username, PDO::PARAM_STR);
+
+            // Execute the query
+            $query->execute();
+
+            // Get the ID of the last inserted record
+            $lastInsertId = $dbh->lastInsertId();
+
+            // Check if insertion was successful
+            if ($lastInsertId) {
+                $msg = "New admin has been added successfully";
+            } else {
+                $error = "ERROR";
+            }
         }
     }
 ?>
@@ -75,8 +84,8 @@ if (strlen($_SESSION['alogin']) == 0) {
         <script type="text/javascript">
             function valid() {
                 // Check if password and confirm password fields match
-                if (document.addemp.password.value != document.addemp.confirmpassword.value) {
-                    alert("New Password and Confirm Password Field do not match!!");
+                if (document.addemp.password.value !== document.addemp.confirmpassword.value) {
+                    alert("New Password and Confirm Password fields do not match!!");
                     document.addemp.confirmpassword.focus();
                     return false;
                 }
@@ -188,7 +197,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         <div class="col-sm-6 clearfix">
                             <div class="user-profile pull-right">
-                                <img class="avatar user-thumb" src="../assets/images/admin.png" alt="avatar">
+                                <img class="avatar user-thumb" src="../assets/images/administrator.png" alt="avatar">
                                 <h4 class="user-name dropdown-toggle" data-toggle="dropdown">ADMIN <i class="fa fa-angle-down"></i></h4>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="logout.php">Log Out</a>
@@ -223,9 +232,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     <?php } ?>
 
                                     <div class="card">
-                                        <form name="addemp" method="POST">
+                                        <form name="addemp" method="POST" onsubmit="return valid();">
                                             <div class="card-body">
-                                                <p class="text-muted font-14 mb-4">Please fill up the form in order to add new system administrator</p>
+                                                <p class="text-muted font-14 mb-4">Please fill up the form in order to add a new system administrator</p>
 
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="col-form-label">Full Name</label>
@@ -254,7 +263,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <input class="form-control" name="confirmpassword" type="password" autocomplete="off" required>
                                                 </div>
 
-                                                <button class="btn btn-primary" name="add" id="update" type="submit" onclick="return valid();">PROCEED</button>
+                                                <button class="btn btn-primary" name="add" id="update" type="submit">PROCEED</button>
                                             </div>
                                         </form>
                                     </div>

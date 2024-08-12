@@ -278,7 +278,7 @@
 
 .horizontal-menu ul li:hover > a,
 .horizontal-menu ul li.active > a {
-  color: #007bff;
+  color: #00ff91;
 }
 
 .horizontal-menu nav > ul > li:first-child > a {
@@ -482,7 +482,7 @@
 }
 
 .notification-area li.settings-btn.active i {
-  color: #007bff;
+  color: #00ff51;
 }
 
 .notification-area li > i {
@@ -788,7 +788,7 @@ ul.breadcrumbs {
 
 .user-profile .dropdown-menu a:hover {
   background: #f8f9fa;
-  color: #2942fa;
+  color: #29fa5a;
 }
 
 /*-------------------- END Page Title Area -------------------*/
@@ -802,13 +802,14 @@ ul.breadcrumbs {
 }
 
 .s-report-inner {
+  background-color: #00ff51;
   padding-left: 85px;
 }
 
 .single-report .icon {
   font-size: 32px;
   color: #fff;
-  background: var(--primary-color);
+  background:#00ff51;
   height: 95px;
   width: 100px;
   text-align: right;
@@ -1994,7 +1995,7 @@ label {
 }
 
 .fw-icons a:hover {
-  color: #007bff;
+  color: #00ffc8;
 }
 
 .fw-icons a i {
@@ -2048,7 +2049,7 @@ label {
 }
 
 .icon-container:hover span {
-  color: #007bff;
+  color: #00ff33;
 }
 
 /*-------------------- END Icons ------------------- */
@@ -2287,7 +2288,7 @@ table.dataTable thead td {
 /*-------------------- 23. Login ------------------- */
 
 .login-area {
-  background: #f3f8fb;
+  background: #053e5f;
 }
 
 .login-box {
@@ -2301,7 +2302,7 @@ table.dataTable thead td {
   margin: auto;
   width: 450px;
   max-width: 100%;
-  background: #fff;
+  background: #bc1616;
   border-radius: 3px;
 }
 
@@ -2411,7 +2412,7 @@ table.dataTable thead td {
 }
 
 .submit-btn-area button:hover {
-  background: #2c71da;
+  background: #2cda6f;
   color: #ffffff;
 }
 
@@ -2468,7 +2469,7 @@ table.dataTable thead td {
 /* login-s2 */
 
 .login-s2 {
-  background: #fff;
+  background: #5c0606;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -2479,7 +2480,7 @@ table.dataTable thead td {
   position: absolute;
   height: 206%;
   width: 97%;
-  background: #fcfcff;
+  background: #05055d;
   border-radius: 50%;
   left: -42%;
   z-index: -1;
@@ -2490,7 +2491,7 @@ table.dataTable thead td {
 .login-s2 .login-form-head,
 .login-s2 .login-box form,
 .login-s2 .login-box form .form-gp input {
-  background: transparent;
+  background-color: #00ff51;
 }
 
 .login-s2 .login-form-head h4,
@@ -2501,7 +2502,7 @@ table.dataTable thead td {
 /* login-s3 */
 
 .login-bg {
-  background: url(../images/bg/singin-bg.jpg) center/cover no-repeat;
+  /* background: url(../images/bg/singin-bg.jpg) center/cover no-repeat; */
   position: relative;
   z-index: 1;
 }
@@ -2522,7 +2523,7 @@ table.dataTable thead td {
 
 .login-box-s2 {
   min-height: 100vh;
-  background: #f9f9f9;
+  background: #2d0355;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2531,7 +2532,7 @@ table.dataTable thead td {
 
 .login-box-s2 form {
   margin: auto;
-  background: #fff;
+  background: #260563;
   width: 100%;
   max-width: 500px;
 }
@@ -2825,3 +2826,18 @@ table.dataTable thead td {
 }
 
 /*-------------------- END Offset Sidebar ------------------- */
+.Icon{
+  background-color: #00ff33;
+  font-size: 32px;
+  color: #fff;
+  background:#00ff51;
+  height: 95px;
+  width: 100px;
+  text-align: right;
+  padding-top: 40px;
+  padding-right: 22px;
+  border-radius: 50%;
+  position: absolute;
+  left: -39px;
+  top: -30px;
+}

@@ -1,28 +1,47 @@
 <?php
-    session_start();
-    include('../includes/dbconn.php');
-    if(isset($_POST['signin'])){
+session_start();
+include('../includes/dbconn.php');
 
-    $uname=$_POST['username'];
-    $password=md5($_POST['password']);
-    $sql ="SELECT UserName,Password FROM admin WHERE UserName=:uname and Password=:password";
-    $query= $dbh -> prepare($sql);
-    $query-> bindParam(':uname', $uname, PDO::PARAM_STR);
-    $query-> bindParam(':password', $password, PDO::PARAM_STR);
-    $query-> execute();
-    $results=$query->fetchAll(PDO::FETCH_OBJ);
+if (isset($_POST['signin'])) {
+    $uname = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
+    $password = $_POST['password'];
 
-    if($query->rowCount() > 0)
-    {
-    $_SESSION['alogin']=$_POST['username'];
-        echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+    // Prepare the SQL query to retrieve the admin data by username
+    $sql = "SELECT UserName, Password FROM admin WHERE UserName = :uname";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':uname', $uname, PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_OBJ);
+
+    if ($result) {
+        // Check if the provided password matches the stored bcrypt hash
+        if (password_verify($password, $result->Password)) {
+            // If the password is correct, rehash it with bcrypt
+            $newHash = password_hash($password, PASSWORD_BCRYPT);
+
+            // Update the database with the new bcrypt hash
+            $updateSql = "UPDATE admin SET Password = :newHash WHERE UserName = :uname";
+            $updateQuery = $dbh->prepare($updateSql);
+            $updateQuery->bindParam(':newHash', $newHash, PDO::PARAM_STR);
+            $updateQuery->bindParam(':uname', $uname, PDO::PARAM_STR);
+            $updateQuery->execute();
+
+            // Log in the user
+            $_SESSION['alogin'] = $uname;
+            session_regenerate_id(true);
+            echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+            exit;
+        } else {
+            // Password is incorrect
+            echo "<script>alert('Incorrect password. Please try again.');</script>";
+        }
     } else {
-        echo "<script>alert('Invalid Details');</script>";
+        // Username is incorrect
+        echo "<script>alert('Incorrect username. Please try again.');</script>";
     }
-
 }
-
 ?>
+
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -78,10 +97,9 @@
                             <i class="ti-lock"></i>
                             <div class="text-danger"></div>
                         </div>
-                        
+
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit" name="signin">Submit <i class="ti-arrow-right"></i></button>
-                            
                         </div>
                         <div class="form-footer text-center mt-5">
                             <p class="text-muted"><a href="../index.php"><i class="ti-arrow-left"></i> Go Back</a></p>
@@ -102,7 +120,7 @@
     <script src="../assets/js/metisMenu.min.js"></script>
     <script src="../assets/js/jquery.slimscroll.min.js"></script>
     <script src="../assets/js/jquery.slicknav.min.js"></script>
-    
+
     <!-- others plugins -->
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/scripts.js"></script>

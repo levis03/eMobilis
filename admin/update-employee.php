@@ -136,7 +136,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                         <div class="col-sm-6 clearfix">
                             <div class="user-profile pull-right">
-                                <img class="avatar user-thumb" src="../assets/images/admin.png" alt="avatar">
+                                <img class="avatar user-thumb" src="../assets/images/administrator.png" alt="avatar">
                                 <h4 class="user-name dropdown-toggle" data-toggle="dropdown">ADMIN <i class="fa fa-angle-down"></i></h4>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="logout.php">Log Out</a>
@@ -244,7 +244,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label class="col-form-label">Your Leave Type</label>
+                                                            <label class="col-form-label">Your Department</label>
                                                             <select class="custom-select" name="department" autocomplete="off">
                                                                 <option value="<?php echo htmlentities($result->Department); ?>"><?php echo htmlentities($result->Department); ?></option>
                                                                 <?php

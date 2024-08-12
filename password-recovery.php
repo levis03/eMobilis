@@ -2,28 +2,30 @@
 // Start or resume the session
 session_start();
 
-// Suppress error reporting
-error_reporting(0);
-
 // Include the database connection file
 include('includes/dbconn.php');
 
 // Check if the 'change' button has been pressed
 if (isset($_POST['change'])) {
-    $newpassword = md5($_POST['newpassword']); // Encrypt the new password using MD5
+    // Sanitize and retrieve form inputs
+    $newpassword = $_POST['newpassword'];
     $empid = $_SESSION['empid']; // Retrieve the employee ID from the session
+
+    // Hash the new password using bcrypt
+    $hashedPassword = password_hash($newpassword, PASSWORD_DEFAULT);
 
     // SQL query to update the password for the given employee ID
     $con = "UPDATE tblemployees SET Password=:newpassword WHERE id=:empid";
     $chngpwd1 = $dbh->prepare($con);
-    $chngpwd1->bindParam(':empid', $empid, PDO::PARAM_STR); // Bind employee ID
-    $chngpwd1->bindParam(':newpassword', $newpassword, PDO::PARAM_STR); // Bind new password
+    $chngpwd1->bindParam(':empid', $empid, PDO::PARAM_INT); // Bind employee ID
+    $chngpwd1->bindParam(':newpassword', $hashedPassword, PDO::PARAM_STR); // Bind new password
     $chngpwd1->execute(); // Execute the query
 
     // Set a success message
-    $msg = "Your Password has been recovered. Enter new credentials to continue";
+    $msg = "Your password has been successfully updated. Enter new credentials to continue.";
 }
 ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
