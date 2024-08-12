@@ -102,7 +102,7 @@
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="../assets/images/administrator.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle " data-toggle="dropdown">ADMIN <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">ADMIN <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="logout.php">Log Out</a>
                             </div>
@@ -134,6 +134,7 @@
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <!-- <img class="avatar user-thumb" src="../assets/images/multiple-users-silhouette.png" alt="Icon"> -->
                                     <!-- <div class="icon"><i class="fa fa-users"></i></div> -->
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Registered Employees</h4>

@@ -2841,3 +2841,9 @@ table.dataTable thead td {
   left: -39px;
   top: -30px;
 }
+.thumb {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
