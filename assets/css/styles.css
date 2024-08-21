@@ -2225,7 +2225,7 @@ table.dataTable thead td {
 /*-------------------- 23. Login ------------------- */
 
 .login-area {
-  background:antiquewhite;
+  background: #829cba;
 }
 
 .login-box {
@@ -2239,13 +2239,13 @@ table.dataTable thead td {
   margin: auto;
   width: 450px;
   max-width: 100%;
-  background:rgb(246, 245, 244);
+  background: #efe9e8;
   border-radius: 3px;
 }
 
 .login-form-head {
   text-align: center;
-  background: #8655fc;
+  background: #000000b2;
   padding: 50px;
 }
 
@@ -2349,7 +2349,7 @@ table.dataTable thead td {
 }
 
 .submit-btn-area button:hover {
-  background: #0469a3;
+  background: #ffaf1f;
   color: #ffffff;
 }
 
@@ -2406,7 +2406,7 @@ table.dataTable thead td {
 /* login-s2 */
 
 .login-s2 {
-  background: #1995AD;
+  background: #1b2839;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -2417,7 +2417,7 @@ table.dataTable thead td {
   position: absolute;
   height: 206%;
   width: 97%;
-  background: #A1D6E2;
+  background: #38b7e9;
   border-radius: 50%;
   left: -42%;
   z-index: -1;
@@ -2428,12 +2428,12 @@ table.dataTable thead td {
 .login-s2 .login-form-head,
 .login-s2 .login-box form,
 .login-s2 .login-box form .form-gp input {
-  background-color: #d9d9eb;
+  background-color: #333230;
 }
 
 .login-s2 .login-form-head h4,
 .login-s2 .login-form-head p {
-  color: #444;
+  color: #faf9f9;
 }
 
 /* login-s3 */
