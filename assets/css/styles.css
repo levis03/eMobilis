@@ -219,7 +219,7 @@
   padding-left: 0;
   padding-right: 0;
 }
-
+ 
 .horizontal-main-wrapper .main-content-inner {
   padding: 0 0 50px;
 }
@@ -769,8 +769,8 @@ ul.breadcrumbs {
 }
 
 .user-profile .dropdown-menu a:hover {
-  background: #f8f9fa;
-  color: #29fa5a;
+  background: #67a8e9;
+  color: #6f7971;
 }
 
 /*-------------------- END Page Title Area -------------------*/
@@ -784,7 +784,7 @@ ul.breadcrumbs {
 }
 
 .s-report-inner {
-  background-color: #f7e8e9;
+  background-color: #5eb9ee;
   padding-left: 85px;
 }
 
@@ -1574,50 +1574,6 @@ table.dbkit-table tr td {
 }
 
 /*-------------------- END Dashboard Three ------------------- */
-
-/*-------------------- 5. Bar Chart ------------------- */
-
-#ambarchart1,
-#ambarchart2,
-#ambarchart3,
-#ambarchart4,
-#ambarchart5,
-#ambarchart6 {
-  height: 400px;
-}
-
-.amcharts-chart-div > a {
-  display: none !important;
-}
-
-/*-------------------- END Bar Chart ------------------- */
-
-/*-------------------- 6. Line Chart ------------------- */
-
-#amlinechart1,
-#amlinechart2,
-#amlinechart3,
-#amlinechart4,
-#amlinechart5 {
-  height: 400px;
-}
-
-/*-------------------- END Line Chart ------------------- */
-
-/*-------------------- 7. Pie Chart ------------------- */
-
-#ampiechart1,
-#ampiechart2,
-#ampiechart3,
-#highpiechart4,
-#highpiechart5,
-#highpiechart6 {
-  height: 400px;
-  width: 100%;
-}
-
-/*-------------------- END Pie Chart ------------------- */
-
 /*-------------------- 8. Accroding ------------------- */
 
 .according .card {
@@ -2032,7 +1988,7 @@ label {
 }
 
 .icon-container:hover span {
-  color: #00ff33;
+  color: #198189;
 }
 
 /*-------------------- END Icons ------------------- */
@@ -2393,7 +2349,7 @@ table.dataTable thead td {
 }
 
 .submit-btn-area button:hover {
-  background: #2cda6f;
+  background: #0469a3;
   color: #ffffff;
 }
 
@@ -2450,7 +2406,7 @@ table.dataTable thead td {
 /* login-s2 */
 
 .login-s2 {
-  background: #5c0606;
+  background: #1995AD;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -2461,7 +2417,7 @@ table.dataTable thead td {
   position: absolute;
   height: 206%;
   width: 97%;
-  background: #05055d;
+  background: #A1D6E2;
   border-radius: 50%;
   left: -42%;
   z-index: -1;
@@ -2504,7 +2460,7 @@ table.dataTable thead td {
 
 .login-box-s2 {
   min-height: 100vh;
-  background: #2d0355;
+  background: #1995AD;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2513,7 +2469,7 @@ table.dataTable thead td {
 
 .login-box-s2 form {
   margin: auto;
-  background: #260563;
+  background: #A1D6E2;
   width: 100%;
   max-width: 500px;
 }
