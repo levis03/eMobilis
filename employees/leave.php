@@ -13,14 +13,14 @@ if (strlen($_SESSION['emplogin']) == 0) {
 } else {
     // Check if the form is submitted
     if (isset($_POST['apply'])) {
-        // Retrieve form data
+        // Retrieve form data from the form fields(applying for leave form)
         $empid = $_SESSION['eid'];
         $leavetype = $_POST['leavetype'];
         $fromdate = $_POST['fromdate'];
         $todate = $_POST['todate'];
         $description = $_POST['description'];
-        $status = 0;
-        $isread = 0;
+        $status = 0; //Initialized to 0 (pending) since the leave request hasn't been approved yet
+        $isread = 0; //also pending since admin hajasoma
 
         // Validate dates
         if ($fromdate > $todate) {
@@ -191,11 +191,13 @@ if (strlen($_SESSION['emplogin']) == 0) {
                                                     <input class="form-control" type="date" required id="example-date-input" name="todate">
                                                 </div>
 
+                                                <!-- generates a dropdown (select) list in an HTML form for selecting a "Leave Type" -->
                                                 <div class="form-group">
                                                     <label class="col-form-label">Your Leave Type</label>
                                                     <select class="custom-select" name="leavetype" autocomplete="off">
                                                         <option value="">Click here to select any ...</option>
                                                         <?php
+                                                        //available leave types are dynamically fetched from the DB table(leave type)
                                                         $sql = "SELECT LeaveType from tblleavetype";
                                                         $query = $dbh->prepare($sql);
                                                         $query->execute();
