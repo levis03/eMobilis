@@ -1,6 +1,7 @@
 <?php
 // Database connection parameters
-define('DB_HOST', 'localhost');      // Database host (usually 'localhost' for local development)
+define('DB_HOST', '127.0.0.1');      // Database host (usually 'localhost' for local development)
+define('DB_PORT', '3307');
 define('DB_USER', 'levis');           // Database username
 define('DB_PASS', 'levis@123');       // Database password
 define('DB_NAME', 'employeeleavedb'); // Database name
