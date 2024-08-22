@@ -10,8 +10,8 @@ COPY . /var/www/html/
 # Step 4: Set permissions on the copied files (optional)
 RUN chown -R www-data:www-data /var/www/html
 
-# Step 5: Expose port 80
-EXPOSE 80
+# Step 5: Expose port 8080
+EXPOSE 8080
 
 # Step 6: Start Apache in the foreground (default behavior in the base image)
 CMD ["apache2-foreground"]
