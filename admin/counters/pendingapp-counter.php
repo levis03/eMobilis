@@ -2,8 +2,8 @@
 // Include the database connection file
 include '../../includes/dbconn.php';
 
-// Define the SQL query to select all IDs from the tblleaves table where Status is '0'
-$sql = "SELECT id FROM tblleaves WHERE Status = '0'";
+// Define the SQL query to select all IDs from the tblleaves table where Status is '0' and the PostingDate is within the last 24 hours
+$sql = "SELECT id FROM tblleaves WHERE Status = '0' AND PostingDate >= NOW() - INTERVAL 1 DAY";
 // Prepare the SQL query for execution
 $query = $dbh->prepare($sql);
 // Execute the prepared SQL query

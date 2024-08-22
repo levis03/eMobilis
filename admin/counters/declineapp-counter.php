@@ -2,8 +2,8 @@
 // Include the database connection file
 include '../../includes/dbconn.php';
 
-// SQL query to select the id from tblleaves where Status is '2'
-$sql = "SELECT id FROM tblleaves WHERE Status = '2'";
+// SQL query to select the id from tblleaves where Status is '2' and the PostingDate is within the last 24 hours
+$sql = "SELECT id FROM tblleaves WHERE Status = '2' AND PostingDate >= NOW() - INTERVAL 1 DAY";
 // Prepare the SQL query
 $query = $dbh->prepare($sql);
 // Execute the SQL query
